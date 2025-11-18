@@ -1,0 +1,84 @@
+{
+  "name": "ascii-voice",
+  "version": "1.0.0",
+  "description": "Groq Voice AI Orb - Desktop companion with transparent floating window",
+  "main": "electron/main-compiled.cjs",
+  "scripts": {
+    "postinstall": "electron-rebuild",
+    "dev": "concurrently \"vite\" \"npm run electron:dev\"",
+    "electron:dev": "npm run build:electron && wait-on http://localhost:5173 && cross-env NODE_ENV=development electron .",
+    "build": "vite build",
+    "build:electron": "node build-electron.js",
+    "rebuild": "electron-rebuild",
+    "package": "npm run build && npm run build:electron && electron-builder",
+    "package:mac": "npm run package -- --mac",
+    "package:win": "npm run package -- --win",
+    "package:linux": "npm run package -- --linux"
+  },
+  "keywords": [
+    "electron",
+    "voice-ai",
+    "groq",
+    "visualization",
+    "desktop"
+  ],
+  "author": "Lalo",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^11.5.0",
+    "dotenv": "^17.2.3",
+    "groq-sdk": "^0.7.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zustand": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3",
+    "electron": "^32.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-rebuild": "^3.2.9",
+    "esbuild": "^0.27.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.groq.ascii-voice",
+    "productName": "AI Orb",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
+  }
+}
