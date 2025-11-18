@@ -1,4 +1,5 @@
 # 🎙️ AI Visualization Voice Assistant
+<img width="1754" height="1231" alt="Screenshot 2025-11-18 at 11 14 55 AM" src="https://github.com/user-attachments/assets/0354c1f0-a65d-4b97-80b6-f80499806a02" />
 
 > An Electron desktop app featuring a floating AI orb with real-time voice conversations, audio-reactive visualizations, and persistent memory powered by Groq's multimodal AI suite
 
